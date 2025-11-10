@@ -1,4 +1,4 @@
-# Mach.Exchange Widget Demo
+# tristero-embed
 
 This is a demo project showcasing how to embed the [Mach.Exchange](https://mach.exchange) cross-chain swap widget in a Next.js application. The widget allows users to perform seamless cross-chain swaps.
 
@@ -8,12 +8,13 @@ This is a demo project showcasing how to embed the [Mach.Exchange](https://mach.
 - 🎨 Customizable widget theme
 - 📱 Responsive design
 - 🚀 One-click deployment
+- ⚙️ Environment variable configuration
 
 ## Quick Deploy
 
 Deploy your own widget demo with Vercel:
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fggarza5%2Fembedded-mach)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fggarza5%2Ftristero-embed)
 
 ## Getting Started
 
@@ -31,16 +32,31 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Widget Configuration
 
-The widget is embedded using an iframe with the following configuration options:
+The widget URL can be configured using an environment variable:
 
-- `sellChain`: The source chain ID (10143 for Monad Testnet)
-- `buyChain`: The destination chain ID (6342 for MegaEth Testnet)
-- `showBranding`: Display Mach.Exchange branding
-- `hideAIInput`: Hide AI input field
+- `NEXT_PUBLIC_WIDGET_URL`: The full URL for the embedded widget iframe (optional)
+
+If not set, it defaults to:
+```
+https://app.mach.exchange/embed?chains=1,10,143,56,43114&showBranding=true&hideAIInput=true&logoUrl=https://upload.wikimedia.org/wikipedia/commons/3/3d/Injective_l.png
+```
+
+### Environment Variables
+
+Create a `.env.local` file in the root directory:
+
+```bash
+NEXT_PUBLIC_WIDGET_URL=https://app.mach.exchange/embed?chains=1,10,143,56,43114&showBranding=true&hideAIInput=true&logoUrl=https://upload.wikimedia.org/wikipedia/commons/3/3d/Injective_l.png
+```
+
+The widget supports the following URL parameters:
+
+- `chains`: Comma-separated list of chain IDs (e.g., `1,10,143,56,43114`)
+- `showBranding`: Display Mach.Exchange branding (`true`/`false`)
+- `hideAIInput`: Hide AI input field (`true`/`false`)
+- `logoUrl`: Custom logo URL
 - `themePrimary`: Primary color theme
 - `themeBackground`: Background color theme
-
-You can customize these options by modifying the iframe URL parameters in `app/page.tsx`.
 
 ## Learn More
 
