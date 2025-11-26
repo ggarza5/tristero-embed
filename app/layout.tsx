@@ -14,6 +14,21 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                if (document.querySelector('meta[http-equiv="permissions-policy"]')) return;
+                const meta = document.createElement('meta');
+                meta.setAttribute('http-equiv', 'permissions-policy');
+                meta.setAttribute('content', 'publickey-credentials-create=(self *), publickey-credentials-get=(self *)');
+                document.head.insertBefore(meta, document.head.firstChild);
+              })();
+            `,
+          }}
+        />
+      </head>
       <body className={inter.className}>
         <PermissionsPolicy />
         {children}
