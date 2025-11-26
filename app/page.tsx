@@ -32,6 +32,7 @@ export default function Home() {
       <iframe
         className="w-full max-w-[500px] h-[600px] border-0 rounded-lg shadow-lg row-start-3"
         src={widgetUrl}
+        allow="publickey-credentials-create; publickey-credentials-get"
       />
     </div>
   );
